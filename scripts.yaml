@@ -1,0 +1,9 @@
+'1564420527396':
+  alias: starte Julias PC
+  sequence:
+  - data:
+      entity_id: switch.pcs
+    service: switch.turn_on
+  - data:
+      entity_id: switch.computer_julia
+    service: switch.turn_on

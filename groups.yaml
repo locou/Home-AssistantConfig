@@ -1,0 +1,11 @@
+  wohnzimmer:
+    name: Wohnzimmer Licht
+    entities:
+      - light.stehlampe_sofa
+      - switch.deko_lampe
+      - switch.schreibtisch_lampe
+  esstisch:
+    name: Esstisch Licht
+    entities:
+      - light.esstisch_lampe_1
+      - light.esstisch_lampe_2

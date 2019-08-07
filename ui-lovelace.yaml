@@ -1,0 +1,106 @@
+resources:
+  - type: js
+    url: /local/fold-entity-row.js?v=1
+  - type: js
+    url: /local/slider-entity-row.js?v=1
+  - type: js
+    url: /local/card-tools.js
+  - type: module
+    url: /local/secondaryinfo-entity-row.js
+title: Hassenhome
+views:
+  - badges:
+      - person.konstantin
+      - sensor.daylight_2
+      - sun.sun
+    cards:
+      - entities:
+          - entities:
+              - entity: automation.3d_drucker_automatisch_ausschalten
+                icon: 'fas:clock'
+                name: Automatisch ausschalten
+              - entity: automation.3d_drucker_benachrichtigung
+                icon: 'fas:comment'
+                name: Benachrichtigung
+            head:
+              entity: switch.drucker3d
+              icon: 'fas:vector-square'
+              name: 3D Drucker
+              secondary_info: 'Verbrauch <b>[[ {entity}.attributes.current_power_w ]]</b>W'
+              type: 'custom:secondaryinfo-entity-row'
+            type: 'custom:fold-entity-row'
+          - entities:
+              - entity: automation.computer_leiste_ausschalten
+                icon: 'fas:clock'
+                name: Automatisch ausschalten
+            head:
+              entity: switch.pcs
+              icon: 'fas:desktop'
+              secondary_info: 'Verbrauch <b>[[ {entity}.attributes.current_power_w ]]</b>W'
+              type: 'custom:secondaryinfo-entity-row'
+            type: 'custom:fold-entity-row'
+          - entity: switch.fernseher
+            icon: 'fas:tv'
+        type: entities
+      - entities:
+          - label: Wohnzimmer
+            type: section
+          - entities:
+              - entity: light.stehlampe_sofa
+                icon: 'bha:floor-lamp'
+                toggle: true
+                type: 'custom:slider-entity-row'
+              - entity: switch.deko_lampe
+                icon: 'bha:floor-lamp'
+              - entity: switch.schreibtisch_lampe
+                icon: 'bha:led-strip'
+            head:
+              entity: group.wohnzimmer
+              icon: 'fas:couch'
+              name: Indirektes Licht
+            type: 'custom:fold-entity-row'
+          - entity: group.esstisch
+            icon: 'bha:ceiling-lamp'
+          - label: Galerie
+            type: section
+          - entity: light.galerie_stehlampe
+            icon: 'bha:floor-lamp'
+            name: Stehlampe
+            type: 'custom:slider-entity-row'
+        show_header_toggle: false
+        title: Es werde LICHT
+        type: entities
+      - entity: weather.home
+        type: weather-forecast
+      - entities:
+          - entity: sensor.filter_pcs_current_power_w
+            name: PCs
+          - entity: sensor.filter_drucker3d_current_power_w
+            name: 3D Drucker
+        hours_to_show: 12
+        refresh_interval: 60
+        title: Verbrauch
+        type: history-graph
+      - camera_image: camera.neptr_cleaning_map
+        entities:
+          - vacuum.neptr
+          - sensor.neptr_status
+          - sensor.neptr_battery
+        title: Neato Neptr
+        type: picture-glance
+    icon: 'fas:home'
+    path: default_view
+    title: Home
+  - badges: []
+    cards:
+      - entities:
+          - entity: sensor.drucker3d_today_energy_kwh
+            icon: 'fas:vector-square'
+          - entity: sensor.drucker3d_total_energy_kwh
+            icon: 'fas:vector-square'
+          - entity: sensor.pcs_today_energy_kwh
+            icon: 'fas:desktop'
+          - entity: sensor.pcs_total_energy_kwh
+            icon: 'fas:desktop'
+        type: glance
+    icon: 'fas:history'

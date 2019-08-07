@@ -1,0 +1,93 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+lovelace:
+  mode: yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+# Frontend
+frontend:
+  extra_html_url:
+    - /local/hass-bha-icons.html
+    - /local/hass-fontawesome-solid.html
+    - /local/hass-fontawesome-regular.html
+    - /local/hass-fontawesome-brands.html
+    
+# Neato
+neato:
+  username: !secret neato_username
+  password: !secret neato_password
+
+# Wake on Lan
+switch:
+  - platform: wake_on_lan
+    name: computer_k
+    mac_address: !secret wake_on_lan_k_mac
+    host: !secret wake_on_lan_k_host
+  - platform: wake_on_lan
+    name: computer_j
+    mac_address: !secret wake_on_lan_j_mac
+    host: !secret wake_on_lan_j_host
+
+sensor:
+  - platform: template
+    sensors:
+      # Neato
+      neptr_status:
+        friendly_name: "Neptr Status"
+        value_template: "{{ states.vacuum.neptr.attributes.status }}"
+      neptr_battery:
+        friendly_name: "Neptr Battery"
+        value_template: "{{ states.vacuum.neptr.attributes.battery_level }}"
+        icon_template: "{{ states.vacuum.neptr.attributes.battery_icon }}"
+      # TP Link
+      pcs_current_power_w:
+        friendly_name: "PCs Verbrauch"
+        value_template: "{{ states.switch.pcs.attributes.current_power_w }}"
+        unit_of_measurement: "W"
+      pcs_total_energy_kwh:
+        friendly_name: "PCs Gesamt Verbrauch"
+        value_template: "{{ states.switch.pcs.attributes.total_energy_kwh }}"
+        unit_of_measurement: "kwh"
+      pcs_today_energy_kwh:
+        friendly_name: "PCs heutiger Verbrauch"
+        value_template: "{{ states.switch.pcs.attributes.today_energy_kwh }}"
+        unit_of_measurement: "kwh"
+      drucker3d_current_power_w:
+        friendly_name: "3D Drucker Verbrauch"
+        value_template: "{{ states.switch.drucker3d.attributes.current_power_w }}"
+        unit_of_measurement: "W"
+      drucker3d_total_energy_kwh:
+        friendly_name: "3D Drucker Gesamt Verbrauch"
+        value_template: "{{ states.switch.drucker3d.attributes.total_energy_kwh }}"
+        unit_of_measurement: "kwh"
+      drucker3d_today_energy_kwh:
+        friendly_name: "3D Drucker heutiger Verbrauch"
+        value_template: "{{ states.switch.drucker3d.attributes.today_energy_kwh }}"
+        unit_of_measurement: "kwh"
+  - platform: filter
+    name: "filter_drucker3d_current_power_w"
+    entity_id: sensor.drucker3d_current_power_w
+    filters:
+      - filter: time_simple_moving_average
+        window_size: 00:06
+        precision: 2
+  - platform: filter
+    name: "filter_pcs_current_power_w"
+    entity_id: sensor.pcs_current_power_w
+    filters:
+      - filter: time_simple_moving_average
+        window_size: 00:02
+        precision: 2

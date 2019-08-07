@@ -1,0 +1,60 @@
+- id: '1564387029643'
+  alias: Computer Leiste Ausschalten
+  trigger:
+  - above: '0'
+    below: '15'
+    entity_id: sensor.filter_pcs_current_power_w
+    for: 00:01:00
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: switch.pcs
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.pcs
+    service: switch.turn_off
+- id: '1564416111025'
+  alias: 3D Drucker automatisch ausschalten
+  trigger:
+  - above: '0'
+    below: '20'
+    entity_id: sensor.filter_drucker3d_current_power_w
+    for: 00:01:00
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: switch.drucker3d
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    state: 'on'
+  action:
+  - data:
+      entity_id: switch.drucker3d
+    service: switch.turn_off
+- id: '1564416528877'
+  alias: 3D Drucker Benachrichtigung
+  trigger:
+  - above: '0'
+    below: '15'
+    entity_id: sensor.drucker3d_current_power_w
+    platform: numeric_state
+  condition:
+  - condition: state
+    entity_id: switch.drucker3d
+    state: 'on'
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+  action:
+  - data:
+      message: Fertig mit Drucken
+      title: 3D Drucker
+    service: persistent_notification.create
