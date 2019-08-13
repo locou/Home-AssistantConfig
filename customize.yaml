@@ -1,0 +1,28 @@
+switch.fernseher:
+  icon: 'fas:tv'
+switch.pcs:
+  icon: 'fas:desktop'
+switch.drucker3d:
+  icon: 'fas:vector-square'
+light.stehlampe_sofa:
+  icon: 'bha:floor-lamp'
+switch.deko_lampe:
+  icon: 'bha:floor-lamp'
+switch.schreibtisch_lampe:
+  icon: 'bha:led-strip'
+
+automation.computer_leiste_ausschalten:
+  icon: 'fas:clock'
+automation.3d_drucker_benachrichtigung:
+  icon: 'fas:comment'
+automation.3d_drucker_automatisch_ausschalten:
+  icon: 'fas:clock'
+automation.wohnzimmer_licht_vor_dem_sonntenuntergang_einschalten:
+  icon: 'fas:clock'
+
+group.wohnzimmer:
+  icon: 'fas:couch'
+group.esstisch:
+  icon: 'bha:ceiling-lamp'
+light.galerie_stehlampe:
+  icon: 'bha:floor-lamp'

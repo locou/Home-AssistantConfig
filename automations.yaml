@@ -58,3 +58,22 @@
       message: Fertig mit Drucken
       title: 3D Drucker
     service: persistent_notification.create
+- id: '1565374374629'
+  alias: Wohnzimmer Licht vor dem Sonntenuntergang einschalten
+  trigger:
+  - event: sunset
+    offset: -01:30:00
+    platform: sun
+  condition:
+  - condition: or
+    conditions:
+    - condition: state
+      entity_id: switch.pcs
+      state: 'on'
+    - condition: state
+      entity_id: switch.fernseher
+      state: 'on'
+  action:
+  - data:
+      entity_id: group.wohnzimmer
+    service: homeassistant.turn_on

@@ -5,7 +5,9 @@ default_config:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
-
+homeassistant:
+  customize: !include customize.yaml
+  
 lovelace:
   mode: yaml
 
@@ -16,6 +18,16 @@ tts:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
+#Todoist
+calendar:
+  - platform: todoist
+    token: !secret todoist_token
+    custom_projects:
+      - name: 'Haus & Garten'
+        due_date_days: 31
+        include_projects:
+          - Haus & Garten
 
 # Frontend
 frontend:
@@ -82,7 +94,7 @@ sensor:
     entity_id: sensor.drucker3d_current_power_w
     filters:
       - filter: time_simple_moving_average
-        window_size: 00:06
+        window_size: 00:10
         precision: 2
   - platform: filter
     name: "filter_pcs_current_power_w"

@@ -5,66 +5,281 @@ resources:
     url: /local/slider-entity-row.js?v=1
   - type: js
     url: /local/card-tools.js
+  - type: js
+    url: /local/text-element.js
   - type: module
     url: /local/secondaryinfo-entity-row.js
 title: Hassenhome
 views:
+# Home Tab
   - badges:
       - person.konstantin
       - sensor.daylight_2
       - sun.sun
     cards:
+      # Floor Plan 1st
+      - entities:
+        type: picture-elements
+        image: /local/home_floorplan_1st.png
+        elements:
+          #Stehlampe Sofa
+          - type: custom:text-element
+            text: Stehlampe Sofa
+            style:
+              top: 50%
+              left: 33%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: light.stehlampe_sofa
+            tap_action:
+              action: toggle
+            style:
+              top: 50%
+              left: 30%
+              #"background": "rgba(0,0,0,0.51)"
+              #"border-radius": "500px"
+          # Computer Leiste
+          - type: custom:text-element
+            text: Computer Leiste
+            style:
+              top: 28%
+              left: 11%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: switch.pcs
+            tap_action:
+              action: toggle
+            style:
+              top: 28%
+              left: 8%
+          # Schreibtisch Lampe
+          - type: custom:text-element
+            text: Schreibtisch Lampe
+            style:
+              top: 18%
+              left: 11%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: switch.schreibtisch_lampe
+            tap_action:
+              action: toggle
+            style:
+              top: 18%
+              left: 8%
+          # Deko Lampe
+          - type: custom:text-element
+            text: Deko Lampe
+            style:
+              top: 11%
+              left: 67%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: switch.deko_lampe
+            tap_action:
+              action: toggle
+            style:
+              top: 11%
+              left: 64%
+          # Fernseher
+          - type: custom:text-element
+            text: Fernseher
+            style:
+              top: 11%
+              left: 35%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: switch.fernseher
+            tap_action:
+              action: toggle
+            style:
+              top: 11%
+              left: 32%
+          # 3D Drucker
+          - type: custom:text-element
+            text: 3D Drucker
+            style:
+              top: 60%
+              left: 18%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: switch.drucker3d
+            tap_action:
+              action: toggle
+            style:
+              top: 60%
+              left: 15%
+          # Plate
+          - type: custom:text-element
+            text: "Erdgeschoss"
+            style:
+              right: 0
+              bottom: 0
+              left: 0
+              "font-weight": "500"
+              "font-size": "16px"
+              "line-height": "40px"
+              "padding": "4px 8px 4px 16px"
+              "background": "rgba(0,0,0,0.5)"
+              "color": var(--text-primary-color)
+              "display": "flex"
+              "transform": "translate(0px, 0px)"
+          # Temperatur
+          - type: icon
+            icon: mdi:thermometer
+            style:
+              bottom: 14px
+              left: 50%
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+          - type: state-label
+            entity: sensor.temperature_2
+            style:
+              bottom: 9px
+              left: "calc(50% + 14px)"
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+          # Luftfeuchtigkeit
+          - type: icon
+            icon: mdi:water-percent
+            style:
+              bottom: 14px
+              left: 70%
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+          - type: state-label
+            entity: sensor.humidity_3
+            style:
+              bottom: 9px
+              left: "calc(70% + 14px)"
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+       # Floor Plan 2st
+      - entities:
+        type: picture-elements
+        image: /local/home_floorplan_2nd.png
+        elements:
+          #Stehlampe Sofa
+          - type: custom:text-element
+            text: Galerie Stehlampe
+            style:
+              top: 12%
+              left: 43%
+              "color": var(--text-primary-color)
+              "background": "rgba(0,0,0,0.51)"
+              "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-icon
+            entity: light.galerie_stehlampe
+            tap_action:
+              action: toggle
+            style:
+              top: 12%
+              left: 40%
+          # Plate
+          - type: custom:text-element
+            text: "Obergeschoss"
+            style:
+              right: 0
+              bottom: 0
+              left: 0
+              "font-weight": "500"
+              "font-size": "16px"
+              "line-height": "40px"
+              "padding": "4px 8px 4px 16px"
+              "background": "rgba(0,0,0,0.5)"
+              "color": var(--text-primary-color)
+              "display": "flex"
+              "transform": "translate(0px, 0px)"
+          # Temperatur
+          - type: icon
+            icon: mdi:thermometer
+            style:
+              bottom: 14px
+              left: 50%
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+          - type: state-label
+            entity: sensor.temperature_5
+            style:
+              bottom: 9px
+              left: "calc(50% + 14px)"
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+          # Luftfeuchtigkeit
+          - type: icon
+            icon: mdi:water-percent
+            style:
+              bottom: 14px
+              left: 70%
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+          - type: state-label
+            entity: sensor.humidity_6
+            style:
+              bottom: 9px
+              left: "calc(70% + 14px)"
+              "color": var(--text-primary-color)
+              "transform": "translate(0px, 0px)"
+      # TV Computer 3D Printer Toggle
       - entities:
           - entities:
               - entity: automation.3d_drucker_automatisch_ausschalten
-                icon: 'fas:clock'
                 name: Automatisch ausschalten
               - entity: automation.3d_drucker_benachrichtigung
-                icon: 'fas:comment'
                 name: Benachrichtigung
             head:
               entity: switch.drucker3d
-              icon: 'fas:vector-square'
               name: 3D Drucker
-              secondary_info: 'Verbrauch <b>[[ {entity}.attributes.current_power_w ]]</b>W'
+              secondary_info: 'Verbrauch <b>[[ sensor.filter_drucker3d_current_power_w ]]</b>W'
               type: 'custom:secondaryinfo-entity-row'
             type: 'custom:fold-entity-row'
           - entities:
               - entity: automation.computer_leiste_ausschalten
-                icon: 'fas:clock'
                 name: Automatisch ausschalten
             head:
               entity: switch.pcs
-              icon: 'fas:desktop'
-              secondary_info: 'Verbrauch <b>[[ {entity}.attributes.current_power_w ]]</b>W'
+              secondary_info: 'Verbrauch <b>[[ sensor.filter_pcs_current_power_w ]]</b>W'
               type: 'custom:secondaryinfo-entity-row'
             type: 'custom:fold-entity-row'
           - entity: switch.fernseher
-            icon: 'fas:tv'
         type: entities
       - entities:
           - label: Wohnzimmer
             type: section
           - entities:
               - entity: light.stehlampe_sofa
-                icon: 'bha:floor-lamp'
                 toggle: true
                 type: 'custom:slider-entity-row'
               - entity: switch.deko_lampe
-                icon: 'bha:floor-lamp'
               - entity: switch.schreibtisch_lampe
-                icon: 'bha:led-strip'
+              - entity: automation.wohnzimmer_licht_vor_dem_sonntenuntergang_einschalten
+                name: Automatisch 01:30 vor Sonnenuntergang einschalten
             head:
               entity: group.wohnzimmer
-              icon: 'fas:couch'
               name: Indirektes Licht
             type: 'custom:fold-entity-row'
           - entity: group.esstisch
-            icon: 'bha:ceiling-lamp'
           - label: Galerie
             type: section
           - entity: light.galerie_stehlampe
-            icon: 'bha:floor-lamp'
             name: Stehlampe
             type: 'custom:slider-entity-row'
         show_header_toggle: false
@@ -81,6 +296,24 @@ views:
         refresh_interval: 60
         title: Verbrauch
         type: history-graph
+      - entities:
+          - entity: sensor.temperature_2
+            name: Erdgeschoss
+          - entity: sensor.temperature_5
+            name: Obergeschoss
+        hours_to_show: 12
+        refresh_interval: 60
+        title: Temperatur
+        type: history-graph
+      - entities:
+          - entity: sensor.humidity_3
+            name: Erdgeschoss
+          - entity: sensor.humidity_6
+            name: Obergeschoss
+        hours_to_show: 12
+        refresh_interval: 60
+        title: Luftfeuchtigkeit
+        type: history-graph
       - camera_image: camera.neptr_cleaning_map
         entities:
           - vacuum.neptr
@@ -91,6 +324,8 @@ views:
     icon: 'fas:home'
     path: default_view
     title: Home
+
+# History Tab
   - badges: []
     cards:
       - entities:
@@ -104,3 +339,13 @@ views:
             icon: 'fas:desktop'
         type: glance
     icon: 'fas:history'
+
+# TickTick Tab
+  - badges: []
+    cards:
+      - entities:
+        type: iframe
+        url: https://www.ticktick.com/#q/all/tasks
+        aspect_ratio: 100%
+        title: TickTick Aufgaben
+    icon: 'fas:list-alt'
