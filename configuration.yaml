@@ -7,7 +7,7 @@ default_config:
 #   base_url: example.duckdns.org:8123
 homeassistant:
   customize: !include customize.yaml
-  
+
 lovelace:
   mode: yaml
 
@@ -36,6 +36,8 @@ frontend:
     - /local/hass-fontawesome-solid.html
     - /local/hass-fontawesome-regular.html
     - /local/hass-fontawesome-brands.html
+  themes:
+    midnight: !include theme_midnight.yaml
     
 # Neato
 neato:

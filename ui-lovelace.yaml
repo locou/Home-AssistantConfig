@@ -20,7 +20,7 @@ views:
       # Floor Plan 1st
       - entities:
         type: picture-elements
-        image: /local/home_floorplan_1st.png
+        image: /local/home_floorplan1.png
         elements:
           #Stehlampe Sofa
           - type: custom:text-element
@@ -29,7 +29,7 @@ views:
               top: 50%
               left: 33%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
               "transform": "translate(0px, -50%)"
           - type: state-icon
@@ -39,7 +39,7 @@ views:
             style:
               top: 50%
               left: 30%
-              #"background": "rgba(0,0,0,0.51)"
+              #"background": "rgba(0,0,0,0.3)"
               #"border-radius": "500px"
           # Computer Leiste
           - type: custom:text-element
@@ -48,8 +48,15 @@ views:
               top: 28%
               left: 11%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
+              "transform": "translate(0px, -50%)"
+          - type: state-label
+            entity: sensor.filter_pcs_current_power_w
+            style:
+              top: "calc(28% + 16px)"
+              left: 11%
+              "color": var(--text-primary-color)
               "transform": "translate(0px, -50%)"
           - type: state-icon
             entity: switch.pcs
@@ -65,7 +72,7 @@ views:
               top: 18%
               left: 11%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
               "transform": "translate(0px, -50%)"
           - type: state-icon
@@ -82,7 +89,7 @@ views:
               top: 11%
               left: 67%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
               "transform": "translate(0px, -50%)"
           - type: state-icon
@@ -99,7 +106,7 @@ views:
               top: 11%
               left: 35%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
               "transform": "translate(0px, -50%)"
           - type: state-icon
@@ -116,7 +123,7 @@ views:
               top: 60%
               left: 18%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
               "transform": "translate(0px, -50%)"
           - type: state-icon
@@ -137,7 +144,7 @@ views:
               "font-size": "16px"
               "line-height": "40px"
               "padding": "4px 8px 4px 16px"
-              "background": "rgba(0,0,0,0.5)"
+              "background": "rgba(0,0,0,0.3)"
               "color": var(--text-primary-color)
               "display": "flex"
               "transform": "translate(0px, 0px)"
@@ -174,7 +181,7 @@ views:
        # Floor Plan 2st
       - entities:
         type: picture-elements
-        image: /local/home_floorplan_2nd.png
+        image: /local/home_floorplan2.png
         elements:
           #Stehlampe Sofa
           - type: custom:text-element
@@ -183,7 +190,7 @@ views:
               top: 12%
               left: 43%
               "color": var(--text-primary-color)
-              "background": "rgba(0,0,0,0.51)"
+              "background": "rgba(0,0,0,0.3)"
               "padding": "2px 5px"
               "transform": "translate(0px, -50%)"
           - type: state-icon
@@ -204,7 +211,7 @@ views:
               "font-size": "16px"
               "line-height": "40px"
               "padding": "4px 8px 4px 16px"
-              "background": "rgba(0,0,0,0.5)"
+              "background": "rgba(0,0,0,0.3)"
               "color": var(--text-primary-color)
               "display": "flex"
               "transform": "translate(0px, 0px)"
@@ -287,33 +294,6 @@ views:
         type: entities
       - entity: weather.home
         type: weather-forecast
-      - entities:
-          - entity: sensor.filter_pcs_current_power_w
-            name: PCs
-          - entity: sensor.filter_drucker3d_current_power_w
-            name: 3D Drucker
-        hours_to_show: 12
-        refresh_interval: 60
-        title: Verbrauch
-        type: history-graph
-      - entities:
-          - entity: sensor.temperature_2
-            name: Erdgeschoss
-          - entity: sensor.temperature_5
-            name: Obergeschoss
-        hours_to_show: 12
-        refresh_interval: 60
-        title: Temperatur
-        type: history-graph
-      - entities:
-          - entity: sensor.humidity_3
-            name: Erdgeschoss
-          - entity: sensor.humidity_6
-            name: Obergeschoss
-        hours_to_show: 12
-        refresh_interval: 60
-        title: Luftfeuchtigkeit
-        type: history-graph
       - camera_image: camera.neptr_cleaning_map
         entities:
           - vacuum.neptr
@@ -338,6 +318,33 @@ views:
           - entity: sensor.pcs_total_energy_kwh
             icon: 'fas:desktop'
         type: glance
+      - entities:
+        - entity: sensor.filter_pcs_current_power_w
+          name: PCs
+        - entity: sensor.filter_drucker3d_current_power_w
+          name: 3D Drucker
+        hours_to_show: 12
+        refresh_interval: 60
+        title: Verbrauch
+        type: history-graph
+      - entities:
+        - entity: sensor.temperature_2
+          name: Erdgeschoss
+        - entity: sensor.temperature_5
+          name: Obergeschoss
+        hours_to_show: 12
+        refresh_interval: 60
+        title: Temperatur
+        type: history-graph
+      - entities:
+        - entity: sensor.humidity_3
+          name: Erdgeschoss
+        - entity: sensor.humidity_6
+          name: Obergeschoss
+        hours_to_show: 12
+        refresh_interval: 60
+        title: Luftfeuchtigkeit
+        type: history-graph
     icon: 'fas:history'
 
 # TickTick Tab
