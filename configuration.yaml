@@ -56,6 +56,8 @@ switch:
     host: !secret wake_on_lan_j_host
 
 sensor:
+  - platform: fritzbox_netmonitor
+    host: 192.168.178.1
   - platform: template
     sensors:
       # Neato
@@ -66,6 +68,23 @@ sensor:
         friendly_name: "Neptr Battery"
         value_template: "{{ states.vacuum.neptr.attributes.battery_level }}"
         icon_template: "{{ states.vacuum.neptr.attributes.battery_icon }}"
+      # fritzbox
+      fritzbox_today_upload:
+        value_template: "{{ (states.sensor.fritz_netmonitor.attributes.bytes_sent|float * 1/1000000) }}"
+        icon_template: mdi:download
+        unit_of_measurement: "MB"
+      fritzbox_today_download:
+        value_template: "{{ (states.sensor.fritz_netmonitor.attributes.bytes_received|float * 1/1000000) }}"
+        icon_template: mdi:upload
+        unit_of_measurement: "MB"
+      fritzbox_current_download:
+        value_template: "{{ (states.sensor.fritz_netmonitor.attributes.transmission_rate_down|float * 1/1000000) }}"
+        icon_template: mdi:download
+        unit_of_measurement: "MB/s"
+      fritzbox_current_upload:
+        value_template: "{{ (states.sensor.fritz_netmonitor.attributes.transmission_rate_up|float * 1/1000000) }}"
+        icon_template: mdi:upload
+        unit_of_measurement: "MB/s"
       # TP Link
       pcs_current_power_w:
         friendly_name: "PCs Verbrauch"

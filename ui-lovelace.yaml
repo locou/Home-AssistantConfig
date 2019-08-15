@@ -338,6 +338,20 @@ views:
         refresh_interval: 60
         title: Luftfeuchtigkeit
         type: history-graph
+      - entities:
+        - entity: sensor.fritzbox_current_upload
+          name: Upload
+        hours_to_show: 6
+        refresh_interval: 5
+        title: Netzwerk Up
+        type: history-graph
+      - entities:
+        - entity: sensor.fritzbox_current_download
+          name: Download
+        hours_to_show: 6
+        refresh_interval: 5
+        title: Netzwerk Down
+        type: history-graph
     icon: 'fas:history'
 
 # TickTick Tab
