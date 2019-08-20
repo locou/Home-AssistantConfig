@@ -68,6 +68,7 @@ sensor:
         friendly_name: "Neptr Battery"
         value_template: "{{ states.vacuum.neptr.attributes.battery_level }}"
         icon_template: "{{ states.vacuum.neptr.attributes.battery_icon }}"
+        unit_of_measurement: "%"
       # fritzbox
       fritzbox_today_upload:
         value_template: "{{ (states.sensor.fritz_netmonitor.attributes.bytes_sent|float * 1/1000000) }}"

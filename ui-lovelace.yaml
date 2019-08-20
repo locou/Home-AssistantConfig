@@ -359,7 +359,12 @@ views:
     cards:
       - entities:
         type: iframe
-        url: https://www.ticktick.com/#q/all/tasks
-        aspect_ratio: 100%
-        title: TickTick Aufgaben
+        url: https://www.ticktick.com/#p/inbox113788867/tasks
+        aspect_ratio: 120%
+        title: Inbox
+      - entities:
+        type: iframe
+        url: https://www.ticktick.com/#p/5d553d2e8f0853bc59477190/tasks
+        aspect_ratio: 120%
+        title: Jährliche Aufgaben
     icon: 'fas:list-alt'
